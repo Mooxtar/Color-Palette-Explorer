@@ -158,6 +158,8 @@
   <button class="button" onclick="createColorScheme()">Create Scheme</button>
   
   <div id="createdColorScheme" class="color-palette"></div>
+  <h3 id="tapBox" class="hidden">Tap any box you want to change</h2>
+
 
   <div id="colorAdjustmentControls">
     <div class="range-wrap">
@@ -200,6 +202,7 @@
     }
     
     document.getElementById('savePaletteBtn').classList.remove('hidden');
+    document.getElementById('tapBox').classList.remove('hidden');
   }
 
   function selectSwatch(swatch) {
