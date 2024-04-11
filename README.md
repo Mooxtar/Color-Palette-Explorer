@@ -7,7 +7,9 @@ Color Palette Explorer is a web application that enables users to create, adjust
 ## Features
 
 Create Custom Palettes: Users can pick a base color and generate a color scheme. 
+
 Adjust Color Properties: Fine-tune hue, saturation, and lightness of individual colors.
+
 Save(without database): Save color palettes.
 
 ## Getting Started
