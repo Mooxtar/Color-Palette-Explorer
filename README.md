@@ -1,12 +1,12 @@
 # Color-Palette-Explorer
 
-Mukhtar Rabayev - Task 2 especially for NFactorial Incubator 2024
+**Mukhtar Rabayev - Task 2 especially for NFactorial Incubator 2024**
 
 Color Palette Explorer is a web application that enables users to create, adjust, and save custom color palettes. It's built with Go, leveraging server-side rendering to deliver a dynamic, interactive experience.
 
 ## Features
 
-Create Custom Palettes: Users can pick a base color and generate a color scheme.
+Create Custom Palettes: Users can pick a base color and generate a color scheme. 
 Adjust Color Properties: Fine-tune hue, saturation, and lightness of individual colors.
 Save(without database): Save color palettes.
 
@@ -22,7 +22,7 @@ This will start the server on localhost:8080.
 
 ## How It Works
 
-User Interface:
+### User Interface:
 
 The **home.page.tmpl** template provides a welcoming introduction to the application.
 The **most.page.tmpl** template displays a gallery of the most used color palettes.
