@@ -4,7 +4,7 @@ Mukhtar Rabayev - Task 2 especially for NFactorial Incubator 2024
 
 Color Palette Explorer is a web application that enables users to create, adjust, and save custom color palettes. It's built with Go, leveraging server-side rendering to deliver a dynamic, interactive experience.
 
-Features
+## Features
 
 Create Custom Palettes: Users can pick a base color and generate a color scheme.
 Adjust Color Properties: Fine-tune hue, saturation, and lightness of individual colors.
