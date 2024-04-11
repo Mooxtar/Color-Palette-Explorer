@@ -1,0 +1,291 @@
+{{template "base" .}}
+
+{{define "content"}}
+
+    <style>
+    .palette {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center .palette content */
+            justify-content: center;
+            margin-bottom: 40px; /* Add some space between each palette */
+        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto; /* Center the container */
+        padding: 20px;
+    }
+    .palette {
+        margin-bottom: 40px; /* Add some space between each palette */
+    }
+    .color-palette {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Align swatches to the start */
+    }
+    .color-swatch {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .color-table {
+        border-collapse: collapse;
+        margin-left: 20px; /* Space between swatches and table */
+    }
+    .color-table th, .color-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    .color-table th {
+        background-color: #f2f2f2;
+    }
+    .info-text {
+        padding: 10px;
+        margin-top: 10px; /* Space between swatches and info text */
+        flex-basis: 100%; /* Ensure it takes full width below swatches */
+    }
+    .palette-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; /* Ensure wrapping for smaller screens */
+    }
+    h2 {
+        align-self: flex-start;
+    }
+
+    .palette-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        overflow: hidden;
+        border: 1px solid #e1e1e1; /* Add a light border for definition */
+    }
+    .palette-colors {
+        display: flex;
+        justify-content: center;
+    }
+    .palette-colors .color-swatch {
+        flex-grow: 1;
+        height: 100px;
+    }
+    .palette-title {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.25rem;
+        background-color: #f2f2f2;
+        color: #333;
+        border-top: 1px solid #e1e1e1;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="palette">
+                    <div class="color-palette">
+                        <div class="palette-card">
+                            <div class="palette-colors">
+                                <div class="color-swatch" style="background-color: #4b3832;"></div>
+                                <div class="color-swatch" style="background-color: #854442;"></div>
+                                <div class="color-swatch" style="background-color: #fff4e6;"></div>
+                                <div class="color-swatch" style="background-color: #3c2f2f;"></div>
+                                <div class="color-swatch" style="background-color: #be9b7b;"></div>
+                            </div>
+                            <div class="palette-title">Cappuccino</div>
+                        </div>
+                        
+                        <table class="color-table">
+                            <tr>
+                                <th>Color</th>
+                                <th>Hex</th>
+                                <th>RGB</th>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #4b3832; width: 100px;"></td>
+                                <td>#4b3832</td>
+                                <td>(75, 56, 50)</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #854442; width: 100px;"></td>
+                                <td>#854442</td>
+                                <td>(133, 68, 66)</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #fff4e6; width: 100px;"></td>
+                                <td>#fff4e6</td>
+                                <td>(255, 244, 230)</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #3c2f2f; width: 100px;"></td>
+                                <td>#3c2f2f</td>
+                                <td>(60, 47, 47)</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #be9b7b; width: 100px;"></td>
+                                <td>#be9b7b</td>
+                                <td>(190, 155, 123)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="palette">
+
+                <div class="color-palette">
+
+                    <div class="palette-card">
+                            <div class="palette-colors">
+                                <div class="color-swatch" style="background-color: #8d5524;"></div>
+                                <div class="color-swatch" style="background-color: #c68642;"></div>
+                                <div class="color-swatch" style="background-color: #e0ac69;"></div>
+                                <div class="color-swatch" style="background-color: #f1c27d;"></div>
+                                <div class="color-swatch" style="background-color: #ffdbac;"></div>
+                            </div>
+                            <div class="palette-title">Skin Tones Color Palette</div>
+                        </div>
+                    
+                    <table class="color-table">
+                        <tr>
+                            <th>Color</th>
+                            <th>Hex</th>
+                            <th>RGB</th>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #8d5524; width: 100px;"></td>
+                            <td>#8d5524</td>
+                            <td>(141,85,36)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #c68642; width: 100px;"></td>
+                            <td>#c68642</td>
+                            <td>(198,134,66)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #e0ac69; width: 100px;"></td>
+                            <td>#e0ac69</td>
+                            <td>(224,172,105)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #f1c27d; width: 100px;"></td>
+                            <td>#f1c27d</td>
+                            <td>(241,194,125)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #ffdbac; width: 100px;"></td>
+                            <td>#ffdbac</td>
+                            <td>(255,219,172)</td>
+                        </tr>   
+                    </table>
+                </div>
+                </div>
+
+                <div class="palette">
+
+                <div class="color-palette">
+
+                    
+                    <div class="palette-card">
+                            <div class="palette-colors">
+                                <div class="color-swatch" style="background-color: #011f4b;"></div>
+                                <div class="color-swatch" style="background-color: #03396c;"></div>
+                                <div class="color-swatch" style="background-color: #005b96;"></div>
+                                <div class="color-swatch" style="background-color: #6497b1;"></div>
+                                <div class="color-swatch" style="background-color: #b3cde0;"></div>
+                            </div>
+                            <div class="palette-title">Beautiful Blues Color Palette</div>
+                        </div>
+                    
+                    
+                    
+                    <table class="color-table">
+                        <tr>
+                            <th>Color</th>
+                            <th>Hex</th>
+                            <th>RGB</th>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #011f4b; width: 100px;"></td>
+                            <td>#011f4b</td>
+                            <td>(1,31,75)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #03396c; width: 100px;"></td>
+                            <td>#03396c</td>
+                            <td>(3,57,108)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #005b96; width: 100px;"></td>
+                            <td>#005b96</td>
+                            <td>(0,91,150)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #6497b1; width: 100px;"></td>
+                            <td>#6497b1</td>
+                            <td>(100,151,177)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #b3cde0; width: 100px;"></td>
+                            <td>#b3cde0</td>
+                            <td>(179,205,224)</td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+
+                <div class="palette">
+                
+
+                <div class="color-palette">
+
+                    <div class="palette-card">
+                            <div class="palette-colors">
+                                <div class="color-swatch" style="background-color: #66545e;"></div>
+                                <div class="color-swatch" style="background-color: #a39193;"></div>
+                                <div class="color-swatch" style="background-color: #aa6f73;"></div>
+                                <div class="color-swatch" style="background-color: #eea990;"></div>
+                                <div class="color-swatch" style="background-color: #f6e0b5;"></div>
+                            </div>
+                            <div class="palette-title">Aesthetic Color Palette</div>
+                        </div>
+                    
+                    
+                    <table class="color-table">
+                        <tr>
+                            <td style="background-color: #66545e; width: 100px;"></td>
+                            <td>#66545e</td>
+                            <td>(102,84,94)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #a39193; width: 100px;"></td>
+                            <td>#a39193</td>
+                            <td>(163,145,147)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #aa6f73; width: 100px;"></td>
+                            <td>#aa6f73</td>
+                            <td>(170,111,115)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #eea990; width: 100px;"></td>
+                            <td>#eea990</td>
+                            <td>(238,169,144)</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #f6e0b5; width: 100px;"></td>
+                            <td>#f6e0b5</td>
+                            <td>(246,224,181)</td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}

@@ -1,0 +1,269 @@
+{{template "base" .}}
+
+{{define "content"}}
+<style>
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .header-container {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #f8f9fa; /* Light gray background */
+  border-bottom: 2px solid #e9ecef; /* Border for separation */
+}
+
+/* Heading style */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  
+  color: #333;
+  margin-bottom: 1rem;
+  
+  letter-spacing: 1px;
+}
+
+/* Color picker styling */
+.color-picker {
+  -webkit-appearance: none;
+  border: none;
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  border-radius: 50%; /* Circular input */
+  background: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #ced4da inset; /* Inner shadow for depth */
+}
+
+/* Adjust the color picker's thumb */
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* Adjust the color picker for Firefox */
+.color-picker::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+  .button {
+    background-color: #5CDB95;
+    color: #05386B;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: #379683;
+  }
+
+  .color-palette {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    border: thin solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+
+  .color-swatch:hover {
+    transform: translateY(-10px);
+  }
+
+  #colorAdjustmentControls {
+    display: none;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #EDF5E1;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+  .range-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .range-label {
+    font-weight: bold;
+    color: #05386B;
+  }
+
+  input[type="range"] {
+    width: 60%;
+  }
+
+  #savedPalettes {
+    padding: 20px;
+    margin-top: 30px;
+    background: #8EE4AF;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .palette {
+    border: thin solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.2s;
+  }
+
+  .palette:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .hidden {
+    display: none;
+}
+</style>
+
+<div class="container">
+  <div class="header-container">
+  <h2 class="section-title">Create and Save Custom Color Palettes</h2>
+  <input class="color-picker" type="color" id="baseColor" value="#ff0000">
+  <h3>Pick a color</h2>
+</div>
+  <button class="button" onclick="createColorScheme()">Create Scheme</button>
+  
+  <div id="createdColorScheme" class="color-palette"></div>
+
+  <div id="colorAdjustmentControls">
+    <div class="range-wrap">
+      <label class="range-label" for="hueRange">Hue:</label>
+      <input type="range" id="hueRange" min="0" max="360">
+    </div>
+    <div class="range-wrap">
+      <label class="range-label" for="saturationRange">Saturation:</label>
+      <input type="range" id="saturationRange" min="0" max="100">
+    </div>
+    <div class="range-wrap">
+      <label class="range-label" for="lightnessRange">Lightness:</label>
+      <input type="range" id="lightnessRange" min="0" max="100">
+    </div>
+    <button class="button" onclick="applyAdjustments()">Apply Color Adjustments</button>
+  </div>
+
+  <button class="button hidden" id="savePaletteBtn" onclick="savePalette()">Save Palette</button>
+  
+  <h2 id="savedPalettesTitle" class="hidden">Your Saved Palettes</h2>
+  <div id="savedPalettes" class="hidden"></div>
+</div>
+<script>
+  let selectedSwatch = null;
+
+  function createColorScheme() {
+    const baseColor = document.getElementById('baseColor').value;
+    const schemeContainer = document.getElementById('createdColorScheme');
+    schemeContainer.innerHTML = '';
+    
+    
+    for (let i = -2; i <= 2; i++) {
+      const colorDiv = document.createElement('div');
+      colorDiv.className = 'color-swatch';
+      const [h, s, l] = hexToHsl(baseColor);
+      const newHue = (h + i * 30 + 360) % 360;
+      colorDiv.style.backgroundColor = `hsl(${newHue}, ${s}%, ${l}%)`;
+      colorDiv.onclick = function() { selectSwatch(this); };
+      schemeContainer.appendChild(colorDiv);
+    }
+    
+    document.getElementById('savePaletteBtn').classList.remove('hidden');
+  }
+
+  function selectSwatch(swatch) {
+    selectedSwatch = swatch;
+    const hsl = hexToHsl(swatch.style.backgroundColor);
+    document.getElementById('hueRange').value = hsl.h;
+    document.getElementById('saturationRange').value = hsl.s;
+    document.getElementById('lightnessRange').value = hsl.l;
+    document.getElementById('colorAdjustmentControls').style.display = 'flex';
+  }
+
+  function applyAdjustments() {
+    if (selectedSwatch) {
+      const hue = document.getElementById('hueRange').value;
+      const saturation = document.getElementById('saturationRange').value;
+      const lightness = document.getElementById('lightnessRange').value;
+      selectedSwatch.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    }
+  }
+
+  function savePalette() {
+    const schemeContainer = document.getElementById('createdColorScheme');
+    const savedPalettesContainer = document.getElementById('savedPalettes');
+    const newPalette = schemeContainer.cloneNode(true);
+    newPalette.id = '';
+    savedPalettesContainer.appendChild(newPalette);
+    document.getElementById('savedPalettes').classList.remove('hidden');
+    document.getElementById('savedPalettesTitle').classList.remove('hidden');
+  }
+
+  function hexToHsl(H) {
+    let r = 0, g = 0, b = 0;
+    if (H.length == 4) {
+      r = "0x" + H[1] + H[1];
+      g = "0x" + H[2] + H[2];
+      b = "0x" + H[3] + H[3];
+    } else if (H.length == 7) {
+      r = "0x" + H[1] + H[2];
+      g = "0x" + H[3] + H[4];
+      b = "0x" + H[5] + H[6];
+    }
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max == min) {
+      h = s = 0;
+    } else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    s *= 100;
+    l *= 100;
+    return [Math.floor(h * 360), Math.floor(s), Math.floor(l)];
+  }
+</script>
+
+</body>
+</html>
+{{end}}

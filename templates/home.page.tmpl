@@ -1,0 +1,65 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <style>
+        #main-carousel .carousel-item img {
+            height: 300px; /* Adjust this value to your preference */
+            object-fit: cover; /* This makes sure images cover the area without stretching */
+        }
+        
+    </style>
+
+    <div id="main-carousel" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#main-carousel" data-slide-to="1"></li>
+            <li data-target="#main-carousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://img.uxcel.com/tags/color-palette-1691391299136-2x.jpg" class="d-block w-100">
+                
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.uxcel.com/practices/step-7-create-a-brand-style-guide-1632383210821/a-1632383210821-2x.jpg?_gl=1*epbwbi*_ga*MTQwNzY2NTk1My4xNzEyNTcwNjA3*_ga_NSW15SJD8D*MTcxMjcwMDU2NC4zLjEuMTcxMjcwMDYwMS4yMy4wLjA." class="d-block w-100" alt="Tray with coffee">
+                
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.uxcel.com/practices/step-6-choose-element-colors-1632383126570/a-1632383126570-2x.jpg?_gl=1*epbwbi*_ga*MTQwNzY2NTk1My4xNzEyNTcwNjA3*_ga_NSW15SJD8D*MTcxMjcwMDU2NC4zLjEuMTcxMjcwMDYwMS4yMy4wLjA." class="d-block w-100" alt="Outside">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center mt-4">Color Palette</h1>
+                <p>
+                    A color palette is a selection of colors chosen for use within a design or visual composition. It consists of a set of colors that work together harmoniously and are used to create a cohesive and visually appealing aesthetic.
+                </p>
+
+                <p>
+                    In design and art, color palettes can be used to create a cohesive and visually appealing aesthetic. For example, a designer might choose a specific color palette for a website or branding materials in order to create a consistent and professional look. A painter might choose a color palette for a piece of artwork in order to convey a specific mood or emotion.
+                    There are many tools and resources available for creating and selecting color palettes, including online color pickers, color wheel tools, and pre-made color palettes. Some designers and artists even create their own custom color palettes by mixing and experimenting with different colors.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col text-center">
+
+                <div class="container gallery">
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{{end}}
